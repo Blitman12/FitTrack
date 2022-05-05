@@ -1,0 +1,26 @@
+.title {
+  text-align: center;
+}
+
+.bmi-container {
+  display: flex;
+  justify-content: space-around;
+  img {
+    width: 30%;
+  }
+  input {
+    margin: 5px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-div {
+      margin-top: 50%;
+    }
+  }
+}
