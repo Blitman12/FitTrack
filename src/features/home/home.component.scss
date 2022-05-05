@@ -1,0 +1,29 @@
+.titles {
+  text-align: center;
+}
+.sub-title {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 40px;
+  li {
+    list-style: none;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  input {
+      margin: 3px
+  }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}

@@ -12,6 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { NavbarModule } from 'src/core/navbar/navbar.module';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
     BmrCalcModule,
     HomeModule,
     ReactiveFormsModule,
+    NavbarModule,
     StoreModule.forRoot(
       {
         'app-router': routerReducer
@@ -36,6 +39,7 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
         runtimeChecks: {}
       }
     ),
+    EffectsModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],

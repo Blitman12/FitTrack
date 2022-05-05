@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { BasicInfo } from 'src/models';
 import { appActions } from '../home/state';
+import { HomeSelectors } from '../home/state/selectors';
+import { BmiSelectors } from './state/selectors';
 
 @Component({
   selector: 'app-bmi-calc',
@@ -13,18 +15,19 @@ import { appActions } from '../home/state';
 
 export class BmiCalcComponent implements OnInit {
   public bmiVal: number = 0;
-  public bmiForm = this._formBuilder.group({
-    weight: ['', Validators.required],
-    height: this._formBuilder.group({
-      heightFeet: ['', Validators.required],
-      heightInch: ['', Validators.required]
-    })
-  })
+
+
+  public bmiForm!: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _store: Store
-    ) { }
+    private _store: Store,
+    private _appSelectors: HomeSelectors,
+    private _bmiSelectors: BmiSelectors
+    ) { 
+      this._appSelectors.basicInfo$.subscribe(info => this._basicInfo = info);
+      this._bmiSelectors.bmiInfo$.subscribe(bmi => this.bmiVal = bmi.bmi)
+    }
 
   public get weightValue(): AbstractControl | null {
     return this.bmiForm.get('weight')
@@ -38,7 +41,16 @@ export class BmiCalcComponent implements OnInit {
     return this.bmiForm.get(['height', 'heightInch'])
   }
 
+  private _basicInfo = {} as BasicInfo;
+
   ngOnInit(): void {
+    this.bmiForm = this._formBuilder.group({
+      weight: [this._basicInfo.weight, Validators.required],
+      height: this._formBuilder.group({
+        heightFeet: [this._basicInfo.heightFeet, Validators.required],
+        heightInch: [this._basicInfo.heightInch, Validators.required]
+      })
+    })
     this.bmiForm.valueChanges.subscribe(() => this.handleValueChanges())
   }
 
@@ -47,20 +59,5 @@ export class BmiCalcComponent implements OnInit {
     const heightFeet = this.heightFtValue?.value
     const heightInch = this.heightInValue?.value
     this._store.dispatch(appActions.basicInfoUpdate({info: {weight, heightFeet, heightInch} as BasicInfo}))
-  }
-  
-  bmiCalc() {
-    let weight = this.weightValue?.value
-    let heightFt = this.heightFtValue?.value
-    let heightIn = this.heightInValue?.value 
-    let heightCm = 0
-    let heightM = 0
-    
-    weight = weight / 2.2
-    heightCm = heightCm + (heightFt * 30.48) + (heightIn * 2.54)
-    heightM = heightCm / 100
-
-    let bmi = weight / (Math.pow(heightM, 2))
-    this.bmiVal = Math.round(bmi * 10 )/10
   }
 }

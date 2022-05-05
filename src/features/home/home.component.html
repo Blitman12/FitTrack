@@ -1,17 +1,19 @@
-<p>home works!</p>
-<div *ngFor="let link of links">
-    <button (click)="handleRoute(link)">{{link.title}}</button>
-</div>
+<h1 class="titles">Dashboard</h1>
+<ul *ngFor="let link of links" class="button-container">
+    <li><button (click)="handleRoute(link)">{{link.title}}</button></li>
+</ul>
 
+
+<h2 class="sub-title">Basic Information</h2>
 <form [formGroup]="informationForm">
-<div>
-    <div>
+<div >
+    <div class="form-container">
         <label for="weight">Weight in pounds: </label>
         <input type="number" formControlName="weight" required>
         <label for="age">Age: </label>
         <input type="number" formControlName="age">
     </div>
-    <div formGroupName="height">
+    <div formGroupName="height" class="form-container">
         <label for="heightFeet">Height in Feet: </label>
         <input type="number" formControlName="heightFeet">
         <label for="heightInch">Inches: </label>
