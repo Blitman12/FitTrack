@@ -1,0 +1,68 @@
+<h2 class="sub-title">Basic Information</h2>
+<form [formGroup]="informationForm">
+  <div>
+    <div class="form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Weight (lbs)</mat-label>
+        <input
+          matInput
+          autocomplete="off" 
+          #message
+          maxlength="2"
+          placeholder="170lbs"
+          type="number"
+          formControlName="weight"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          autocomplete="off" 
+          #message
+          maxlength="2"
+          placeholder="27"
+          type="number"
+          formControlName="age"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <p>Height</p>
+    <div formGroupName="height" class="height-options">
+      <mat-form-field appearance="fill">
+        <mat-label>Feet</mat-label>
+        <input
+          matInput
+          autocomplete="off" 
+          #message
+          maxlength="1"
+          placeholder="6ft"
+          type="number"
+          formControlName="heightFeet"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Inches</mat-label>
+        <input
+          matInput
+          autocomplete="off" 
+          #message
+          maxlength="2"
+          placeholder="8in"
+          type="number"
+          formControlName="heightInch"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

@@ -5,8 +5,10 @@
 .bmi-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   img {
     width: 30%;
+    min-width: 250px;
   }
   input {
     margin: 5px;
@@ -22,5 +24,18 @@
     .form-div {
       margin-top: 50%;
     }
+  }
+}
+
+.bmi-val-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  mat-icon {
+    align-self: center;
+    margin-right: 15px;
+  }
+  p {
+    height: 13px;
   }
 }

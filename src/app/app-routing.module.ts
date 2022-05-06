@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BmiCalcComponent } from 'src/features/bmi-calc/bmi-calc.component';
 import { BmrCalcComponent } from 'src/features/bmr-calc/bmr-calc.component';
-import { HomeComponent } from 'src/features/home/home.component';
+import { DashboardComponent } from 'src/features/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component:  DashboardComponent,
     },
     {
       path: 'bmi',

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BmiCalcModule } from 'src/features/bmi-calc/bmi-calc.module';
-import { HomeModule } from 'src/features/home/home.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BmrCalcModule } from 'src/features/bmr-calc/bmr-calc.module';
 import { StoreModule } from '@ngrx/store';
@@ -14,6 +13,10 @@ import { environment } from '../environments/environment';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { NavbarModule } from 'src/core/navbar/navbar.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormModule } from 'src/core/form/form.module';
+import { DashboardModule } from 'src/features/dashboard/dashboard.module';
+
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { NavbarModule } from 'src/core/navbar/navbar.module';
     CommonModule,
     BmiCalcModule,
     BmrCalcModule,
-    HomeModule,
+    DashboardModule,
+    FormModule,
     ReactiveFormsModule,
     NavbarModule,
     StoreModule.forRoot(
@@ -41,7 +45,8 @@ import { NavbarModule } from 'src/core/navbar/navbar.module';
     ),
     EffectsModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

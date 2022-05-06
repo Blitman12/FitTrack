@@ -1,4 +1,6 @@
+import { PageName } from "./page-name";
+
 export interface Link {
-    title: string;
     link: string;
+    pageName: PageName
 }

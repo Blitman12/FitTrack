@@ -1,28 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BasicInfo, Link } from 'src/models';
+import { BasicInfo, Link, PageName } from 'src/models';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { HomeSelectors } from './state/selectors';
-import { appActions } from './state';
+import { FormSelectors } from './state/selectors';
+import { formActions } from './state';
+import { NavActions } from '../navbar/state';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  public links: Array<Link> = [
-    {
-      title: 'bmr',
-      link: 'bmr',
-    },
-    {
-      title: 'bmi',
-      link: 'bmi',
-    },
-  ];
+export class FormComponent implements OnInit {
+
 
   public informationForm!: FormGroup;
 
@@ -42,13 +34,17 @@ export class HomeComponent implements OnInit {
     return this.informationForm.get('age')
   }
 
+  public get genderValue(): AbstractControl | null {
+    return this.informationForm.get('gender')
+  }
+
   private _basicInfo = {} as BasicInfo;
 
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
     private _store: Store,
-    private _appSelectors: HomeSelectors
+    private _appSelectors: FormSelectors
   ) {
     this._appSelectors.basicInfo$.subscribe(info => this._basicInfo = info)
   }
@@ -57,6 +53,7 @@ export class HomeComponent implements OnInit {
     this.informationForm = this._formBuilder.group({
       weight: [this._basicInfo.weight, Validators.required],
       age: [this._basicInfo.age, Validators.required],
+      gender: [this._basicInfo.gender, Validators.required],
       height: this._formBuilder.group({
         heightFeet: [this._basicInfo.heightFeet, Validators.required],
         heightInch: [this._basicInfo.heightInch, Validators.required],
@@ -70,10 +67,7 @@ export class HomeComponent implements OnInit {
     const heightFeet = this.heightFtValue?.value
     const heightInch = this.heightInValue?.value
     const age = this.ageValue?.value
-    this._store.dispatch(appActions.basicInfoUpdate({info: {weight, heightFeet, heightInch, age}}))
-  }
-
-  handleRoute(link: Link) {
-    this._router.navigateByUrl(link.link);
+    const gender = this.genderValue?.value
+    this._store.dispatch(formActions.basicInfoUpdate({info: {weight, heightFeet, heightInch, age, gender} as BasicInfo}))
   }
 }

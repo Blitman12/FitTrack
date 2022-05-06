@@ -1,8 +1,22 @@
 .titles {
-    text-align: center;
+  text-align: center;
+  font-size: xx-large;
+  align-self: center;
 }
 
 .nav-container {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  align-self: center;
+  div {
+    width: 32%;
+    display: inline;
+    h1 {
+      margin: 20px 0 0 0!important;
+    }
+  }
+  button {
+    margin: 10px;
+    height: 40px;
+  }
 }
+

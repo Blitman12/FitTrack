@@ -1,5 +1,25 @@
 <div class="nav-container">
-    <button *ngIf="isVisible$ | async" (click)="homeClicked()">Home</button>
-     <h1 class="titles">Fit Track</h1>
-     <div></div>
- </div>
+  <div>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Example icon button with a home icon"
+      *ngIf="isVisible$ | async"
+      (click)="homeClicked()"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+    <button
+      *ngFor="let link of links"
+      (click)="handleRoute(link)"
+      mat-raised-button
+      color="warn"
+    >
+      {{ link.pageName }}
+    </button>
+  </div>
+  <div>
+    <h1 class="titles">Body Fit - {{ pageName$ | async }}</h1>
+  </div>
+  <div></div>
+</div>

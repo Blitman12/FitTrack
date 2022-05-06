@@ -1,26 +1,10 @@
-<h1 class="title">BMI Calculator</h1>
+<h1 class="title">Body Mass Index Calculator</h1>
 
 <div class="title">
   <h3>What is my BMI?</h3>
-  <p>{{ bmiVal }}</p>
+  <div class="bmi-val-container">
+    <mat-icon>fitness_center</mat-icon>
+    <p>BMI: {{ bmiVal }}</p>
+  </div>
 </div>
 
-<div class="bmi-container">
-  <form [formGroup]="bmiForm">
-    <div class="form-div">
-      <label for="weight">Weight in pounds: </label>
-      <input type="number" formControlName="weight" required />
-      <div formGroupName="height">
-        <label for="heightFeet">Height In Feet: </label>
-        <input type="number" formControlName="heightFeet" required />
-        <label for="heightInch">Height In Inches: </label>
-        <input type="number" formControlName="heightInch" required />
-      </div>
-    </div>
-  </form>
-
-  <img
-    src="https://westlakeplasticsurgery.com/wp-content/uploads/2020/02/BMI-Chart-Detailed.png"
-    alt="bmi chart"
-  />
-</div>
