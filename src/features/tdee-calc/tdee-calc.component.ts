@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { TdeeSelectors } from './state/selectors';
 
 @Component({
   selector: 'app-tdee-calc',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tdee-calc.component.scss']
 })
 export class TdeeCalcComponent implements OnInit {
+  public tdee = 0;
 
-  constructor() { }
+  constructor(private _store: Store, private _tdeeSelector: TdeeSelectors) { 
+    this._tdeeSelector.tdeeInfo$.subscribe(tdee => this.tdee = tdee)
+   }  
 
   ngOnInit(): void {
+
   }
 
 }
