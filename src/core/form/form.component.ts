@@ -38,6 +38,10 @@ export class FormComponent implements OnInit {
     return this.informationForm.get('gender')
   }
 
+  public get activityLevel(): AbstractControl | null {
+    return this.informationForm.get('activityLevel')
+  }
+
   private _basicInfo = {} as BasicInfo;
 
   constructor(
@@ -54,6 +58,7 @@ export class FormComponent implements OnInit {
       weight: [this._basicInfo.weight, Validators.required],
       age: [this._basicInfo.age, Validators.required],
       gender: [this._basicInfo.gender, Validators.required],
+      activityLevel: [this._basicInfo.activityLevel, Validators.required],
       height: this._formBuilder.group({
         heightFeet: [this._basicInfo.heightFeet, Validators.required],
         heightInch: [this._basicInfo.heightInch, Validators.required],
@@ -68,6 +73,7 @@ export class FormComponent implements OnInit {
     const heightInch = this.heightInValue?.value
     const age = this.ageValue?.value
     const gender = this.genderValue?.value
-    this._store.dispatch(formActions.basicInfoUpdate({info: {weight, heightFeet, heightInch, age, gender} as BasicInfo}))
+    const activityLevel = this.activityLevel?.value
+    this._store.dispatch(formActions.basicInfoUpdate({info: {weight, heightFeet, heightInch, age, gender, activityLevel} as BasicInfo}))
   }
 }

@@ -1,3 +1,4 @@
+import { ActivityLevel } from './activity-level';
 import { GenderType } from './gender-type';
 
 export class BasicInfo {
@@ -6,4 +7,5 @@ export class BasicInfo {
   heightInch = 0;
   weight = 0;
   gender = GenderType.Male;
+  activityLevel = ActivityLevel.Sedentary
 }

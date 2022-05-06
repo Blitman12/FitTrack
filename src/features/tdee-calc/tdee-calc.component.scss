@@ -1,0 +1,16 @@
+.titles {
+    text-align: center;
+}
+
+.tdee-val-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    mat-icon {
+      align-self: center;
+      margin-right: 15px;
+    }
+    p {
+      height: 13px;
+    }
+  }

@@ -1,6 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { BasicInfo } from "src/models";
-import { GenderType } from "src/models/gender-type";
 import { formActions } from ".";
 
 export const featureName = 'basicInfoSlice';

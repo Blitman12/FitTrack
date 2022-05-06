@@ -24,6 +24,10 @@ export class NavbarComponent {
       link: 'bmi',
       pageName: PageName.BMI,
     },
+    {
+      link: 'tdee',
+      pageName: PageName.TDEE
+    }
   ];
 
   constructor(

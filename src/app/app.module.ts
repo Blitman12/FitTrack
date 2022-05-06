@@ -16,6 +16,7 @@ import { NavbarModule } from 'src/core/navbar/navbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormModule } from 'src/core/form/form.module';
 import { DashboardModule } from 'src/features/dashboard/dashboard.module';
+import { TdeeCalcModule } from 'src/features/tdee-calc/tdee-calc.module';
 
 
 
@@ -31,6 +32,7 @@ import { DashboardModule } from 'src/features/dashboard/dashboard.module';
     BmiCalcModule,
     BmrCalcModule,
     DashboardModule,
+    TdeeCalcModule,
     FormModule,
     ReactiveFormsModule,
     NavbarModule,

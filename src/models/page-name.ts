@@ -1,5 +1,6 @@
 export enum PageName {
     Dashboard = 'Dashboard',
     BMI = 'BMI',
-    BMR = 'BMR'
+    BMR = 'BMR',
+    TDEE = 'TDEE'
 }
