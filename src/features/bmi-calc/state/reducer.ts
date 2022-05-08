@@ -5,17 +5,20 @@ export const featureName = 'bmiSlice';
 
 export interface BmiState {
     bmiInfo: number;
+    weightStatus:  string;
 }
 
 export const initialState: BmiState = {
-    bmiInfo: 0
+    bmiInfo: 0,
+    weightStatus: 'underweight'
 }
 
 const bmiReducer = createReducer(
     initialState,
-    on(bmiActions.bmiUpdate, (state, {bmi}) => ({
+    on(bmiActions.bmiUpdate, (state, {bmi, weight}) => ({
         ...state,
-        bmiInfo: bmi
+        bmiInfo: bmi,
+        weightStatus: weight
     })),
     on(bmiActions.resetBmi, () => ({
         ...initialState

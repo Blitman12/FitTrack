@@ -43,6 +43,8 @@ export class NavbarComponent {
 
   public homeClicked(): void {
     this._router.navigateByUrl('/');
+    this._store.dispatch(NavActions.pageNameChanged({pageName: PageName.Dashboard}))
+
   }
 
   handleRoute(link: Link) {

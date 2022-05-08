@@ -4,7 +4,7 @@
   <h3>What is my BMI?</h3>
   <div class="bmi-val-container">
     <mat-icon>fitness_center</mat-icon>
-    <p>BMI: {{ bmiVal }}</p>
+    <p>BMI: {{ bmiVal }}  <span *ngIf="bmiVal !== 0"> - {{weightStatus}}</span></p>
   </div>
 </div>
 

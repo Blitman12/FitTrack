@@ -21,6 +21,14 @@ export class BmiEffects {
 
   constructor(private _actions$: Actions, private _store: Store) {}
 
+  weightStatus(bmi: number): string {
+      if (bmi <= 18.5) return "underweight"
+      if (bmi > 18.5 && bmi <=25) return "healthy"
+      if (bmi > 25 && bmi <= 30) return "overweight"
+      if (bmi > 30) return "obese"
+      return "end"
+  }
+
   bmiCalc(basicInfo: BasicInfo) {
     let { weight } = basicInfo;
     const { heightFeet, heightInch } = basicInfo;
@@ -38,9 +46,11 @@ export class BmiEffects {
 
     let bmi = weight / Math.pow(heightM, 2);
     const bmiVal = Math.round(bmi * 10) / 10;
+    const weightStatus = this.weightStatus(bmiVal)
     this._store.dispatch(
       bmiActions.bmiUpdate({
         bmi: bmiVal,
+        weight: weightStatus
       })
     );
   }

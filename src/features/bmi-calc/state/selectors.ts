@@ -4,7 +4,7 @@ import * as fromReducer from "./reducer";
 
 const getBmiState = createFeatureSelector<fromReducer.BmiState>(fromReducer.featureName);
 
-export const getBmiInfo = createSelector(getBmiState, state => state.bmiInfo);
+export const getBmiInfo = createSelector(getBmiState, state => state);
 
 @Injectable({
     providedIn: 'root'
