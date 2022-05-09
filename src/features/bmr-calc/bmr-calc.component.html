@@ -2,8 +2,8 @@
 
 <div class="titles">
   <h3>What is my BMR?</h3>
-  <div class="bmr-val-container">
+  <div class="bmr-val-container" *ngIf="bmrVal !== 0">
     <mat-icon>fitness_center</mat-icon>
-    <p>{{ bmrVal }} Calories/day</p>
+    <p>{{ bmrVal }} Calories burned at rest each day</p>
   </div>
 </div>

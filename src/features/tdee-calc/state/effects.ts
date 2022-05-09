@@ -53,9 +53,9 @@ export class TdeeEffects {
             default:
                 console.error('An error occured')
         }
-        tdee = Math.round(tdee)
-        const muscleGain = tdee + 200
-        const fatLoss = Math.round(tdee - (tdee * 0.2))
-        this._store.dispatch(tdeeActions.tdeeUpdate({tdee: {muscleGain: muscleGain, fatLoss: fatLoss, tdee: tdee}}))
+        tdee = Math.round(tdee);
+        const muscleGain = tdee + 200;
+        const fatLoss = Math.round(tdee - (tdee * 0.2));
+        this._store.dispatch(tdeeActions.tdeeUpdate({tdee: {muscleGain: muscleGain, fatLoss: fatLoss, tdee: tdee}}));
     }
 }

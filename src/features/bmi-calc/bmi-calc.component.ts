@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BmiSelectors } from './state/selectors';
 
@@ -8,7 +8,7 @@ import { BmiSelectors } from './state/selectors';
   styleUrls: ['./bmi-calc.component.scss']
 })
 
-export class BmiCalcComponent implements OnInit {
+export class BmiCalcComponent {
   public bmiVal: number = 0;
   public weightStatus: string = "" ;
 
@@ -19,9 +19,5 @@ export class BmiCalcComponent implements OnInit {
       this._bmiSelectors.bmiInfo$.subscribe(bmi => this.bmiVal = bmi.bmiInfo)
       this._bmiSelectors.bmiInfo$.subscribe(bmi => this.weightStatus = bmi.weightStatus)
     }
-
-
-  ngOnInit(): void {
-  }
 
 }

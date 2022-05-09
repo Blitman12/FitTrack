@@ -2,9 +2,19 @@
 
 <div class="title">
   <h3>What is my BMI?</h3>
-  <div class="bmi-val-container">
+  <div class="bmi-val-container" *ngIf="bmiVal !== 0">
     <mat-icon>fitness_center</mat-icon>
     <p>BMI: {{ bmiVal }}  <span *ngIf="bmiVal !== 0"> - {{weightStatus}}</span></p>
   </div>
+  <div class="information-container" *ngIf="bmiVal !== 0">
+    <p>BMI does not take the following into consideration: </p>
+    <ul>
+      <li>Muscle mass</li>
+      <li>Bone Density</li>
+      <li>Fat distribution</li>
+    </ul>
+  </div>
 </div>
+
+
 

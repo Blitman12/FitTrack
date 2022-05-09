@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { BmiCalcComponent } from 'src/features/bmi-calc/bmi-calc.component';
 import { BmrCalcComponent } from 'src/features/bmr-calc/bmr-calc.component';
@@ -6,26 +7,26 @@ import { DashboardComponent } from 'src/features/dashboard/dashboard.component';
 import { TdeeCalcComponent } from 'src/features/tdee-calc/tdee-calc.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component:  DashboardComponent,
-    },
-    {
-      path: 'bmi',
-      component: BmiCalcComponent
-    },
-    {
-      path: 'bmr',
-      component: BmrCalcComponent
-    },
-    {
-      path: 'tdee',
-      component: TdeeCalcComponent
-    }
+  {
+    path: '',
+    component: DashboardComponent,
+  },
+  {
+    path: 'bmi',
+    component: BmiCalcComponent,
+  },
+  {
+    path: 'bmr',
+    component: BmrCalcComponent,
+  },
+  {
+    path: 'tdee',
+    component: TdeeCalcComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), BrowserAnimationsModule],
   exports: [RouterModule],
   declarations: [],
 })

@@ -1,7 +1,7 @@
 <h2 class="titles">Total Daily Energy Expenditure</h2>
 <div class="titles">
-  <h2>What is my TDEE?</h2>
-  <div class="tdee-val-container">
+  <h3>What is my TDEE?</h3>
+  <div class="tdee-val-container" *ngIf="tdeeInfo.tdee !== 0">
     <mat-icon>fitness_center</mat-icon>
     <p>{{ tdeeInfo.tdee }} Calories consumed a day to maintain current weight</p>
   </div>
