@@ -1,22 +1,26 @@
 import { createReducer, on, Action } from "@ngrx/store";
 import { tdeeActions } from ".";
-
+import { TdeeInfo } from "src/models";
 
 export const featureName = 'tdeeSlice';
 
-export interface TdeeState {
-    tdeeInfo: number
+export interface TdeeState{
+    tdeeInfo: TdeeInfo
 }
 
 export const initialState: TdeeState = {
-    tdeeInfo: 0
+    tdeeInfo: new TdeeInfo()
 }
 
 const tdeeReducer = createReducer(
     initialState,
     on(tdeeActions.tdeeUpdate, (state, {tdee}) => ({
         ...state,
-        tdeeInfo: tdee
+        tdeeInfo: {
+            tdee: tdee.tdee,
+            muscleGain: tdee.muscleGain,
+            fatLoss: tdee.fatLoss
+        }
     })),
     on(tdeeActions.resetTdee, () => ({
         ...initialState

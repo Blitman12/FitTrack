@@ -3,10 +3,9 @@ import {  Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { concatMap, debounceTime, of, tap, withLatestFrom } from "rxjs";
 import { formActions } from "src/core/form/state";
-import { BasicInfo } from "src/models";
+import { BasicInfo, TdeeInfo } from "src/models";
 import { tdeeActions } from ".";
 import {BmrSelectors} from '../../bmr-calc/state/selectors'
-
 
 
 @Injectable({
@@ -34,10 +33,7 @@ export class TdeeEffects {
         if (_bmrInfo === 0) {
             return
         }
-        
         let tdee = 0;
-
-        console.log(activityLevel)
         switch(activityLevel) {
             case '1':
                 tdee = 1.2 * _bmrInfo
@@ -58,6 +54,8 @@ export class TdeeEffects {
                 console.error('An error occured')
         }
         tdee = Math.round(tdee)
-        this._store.dispatch(tdeeActions.tdeeUpdate({tdee}))
+        const muscleGain = tdee + 200
+        const fatLoss = Math.round(tdee - (tdee * 0.2))
+        this._store.dispatch(tdeeActions.tdeeUpdate({tdee: {muscleGain: muscleGain, fatLoss: fatLoss, tdee: tdee}}))
     }
 }

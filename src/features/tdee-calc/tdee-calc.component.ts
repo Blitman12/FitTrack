@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TdeeInfo } from 'src/models';
 import { TdeeSelectors } from './state/selectors';
 
 @Component({
@@ -8,14 +9,17 @@ import { TdeeSelectors } from './state/selectors';
   styleUrls: ['./tdee-calc.component.scss']
 })
 export class TdeeCalcComponent implements OnInit {
-  public tdee = 0;
+  public tdeeInfo: TdeeInfo = {
+    tdee: 0,
+    muscleGain: 0,
+    fatLoss: 0
+  };
 
   constructor(private _store: Store, private _tdeeSelector: TdeeSelectors) { 
-    this._tdeeSelector.tdeeInfo$.subscribe(tdee => this.tdee = tdee)
+    this._tdeeSelector.tdeeInfo$.subscribe(tdee => this.tdeeInfo = tdee)
    }  
 
   ngOnInit(): void {
-
   }
 
 }
