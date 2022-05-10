@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import {  Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { concatMap, debounceTime, of, tap, withLatestFrom } from "rxjs";
+import { combineLatestWith, concatMap, of, tap } from "rxjs";
 import { formActions } from "src/core/form/state";
-import { BasicInfo, TdeeInfo } from "src/models";
+import { BasicInfo } from "src/models";
 import { tdeeActions } from ".";
 import {BmrSelectors} from '../../bmr-calc/state/selectors'
 
@@ -16,9 +16,9 @@ export class TdeeEffects {
         () => 
         this._actions$.pipe(
             ofType(formActions.basicInfoUpdate),
-            debounceTime(0),
+            // debounceTime(0),
             concatMap((action) => of(action).pipe(
-                withLatestFrom(this._bmrSelector.bmrInfo$)
+                combineLatestWith(this._bmrSelector.bmrInfo$)
             )),
             tap(([action, bmrInfo]) => this.tdeeCalc(action.info, bmrInfo))
         ),
