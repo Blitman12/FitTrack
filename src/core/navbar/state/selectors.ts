@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
-import { createFeatureSelector, createSelector, Store } from "@ngrx/store";
-import * as fromReducer from "./reducer";
+import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
+
+import * as fromReducer from './reducer';
 
 const getNavState = createFeatureSelector<fromReducer.NavState>(fromReducer.featureName);
 
@@ -14,5 +15,5 @@ const getPageName = createSelector(getNavState, state => state.pageName);
 export class NavSelectors {
     public isVisible$ = this._store.select(getNavVisibility);
     public pageName$ = this._store.select(getPageName)
-    constructor(private _store: Store){}
+    public constructor(private _store: Store){}
 }

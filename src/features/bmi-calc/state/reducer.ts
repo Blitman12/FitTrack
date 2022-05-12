@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
+
 import { bmiActions } from ".";
 
 export const featureName = 'bmiSlice';
@@ -24,8 +25,6 @@ const bmiReducer = createReducer(
         ...initialState
     }))
 )
-
-
 
 export function reducer(state: BmiState, action: Action): BmiState {
     return bmiReducer(state, action)

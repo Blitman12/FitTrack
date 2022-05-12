@@ -1,1 +1,1 @@
-export * as NavActions from "./actions"
+export * as NavActions from './actions';

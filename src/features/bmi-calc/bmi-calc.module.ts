@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BmiCalcRoutingModule } from './bmi-calc-routing.module';
-import { BmiCalcComponent } from './bmi-calc.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { StoreModule } from '@ngrx/store';
-import * as fromFeature from './state/reducer';
 import { EffectsModule } from '@ngrx/effects';
+
+import * as fromFeature from './state/reducer';
 import { BmiEffects } from './state/effects';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
+import { BmiCalcComponent } from './bmi-calc.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,6 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
-    BmiCalcRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature(fromFeature.featureName, fromFeature.reducer),
     EffectsModule.forFeature([BmiEffects]),

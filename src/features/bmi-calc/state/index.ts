@@ -1,1 +1,1 @@
-export * as bmiActions from './actions'
+export * as bmiActions from './actions';

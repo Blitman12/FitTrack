@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TdeeCalcComponent } from './tdee-calc.component';
 import {MatIconModule} from '@angular/material/icon';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromReducer from './state/reducer'
 import { StoreModule } from '@ngrx/store';
+
+import * as fromReducer from './state/reducer'
 import { TdeeEffects } from './state/effects';
+import { TdeeCalcComponent } from './tdee-calc.component';
 
 @NgModule({
   declarations: [

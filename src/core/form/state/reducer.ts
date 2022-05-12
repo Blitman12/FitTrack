@@ -1,6 +1,7 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { BasicInfo } from "src/models";
-import { formActions } from ".";
+import { Action, createReducer, on } from '@ngrx/store';
+
+import { BasicInfo } from 'src/models';
+import { formActions } from '.';
 
 export const featureName = 'basicInfoSlice';
 
@@ -21,8 +22,8 @@ const appReducer = createReducer(
     on(formActions.resetBasicInfo, () => ({
         ...initialState
     }))
-)
+);
 
 export function reducer(state: FormState, action: Action): FormState {
-    return appReducer(state, action)
+    return appReducer(state, action);
 }

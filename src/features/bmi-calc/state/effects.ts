@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
+
 import { formActions } from 'src/core/form/state';
 import { BasicInfo } from 'src/models';
 import { bmiActions } from '.';
@@ -19,9 +20,9 @@ export class BmiEffects {
     { dispatch: false }
   );
 
-  constructor(private _actions$: Actions, private _store: Store) {}
+  public constructor(private _actions$: Actions, private _store: Store) {}
 
-  weightStatus(bmi: number): string {
+  private weightStatus(bmi: number): string {
       if (bmi <= 18.5) return "underweight"
       if (bmi > 18.5 && bmi <=25) return "healthy"
       if (bmi > 25 && bmi <= 30) return "overweight"
@@ -29,7 +30,7 @@ export class BmiEffects {
       return "end"
   }
 
-  bmiCalc(basicInfo: BasicInfo) {
+  private bmiCalc(basicInfo: BasicInfo) {
     let { weight } = basicInfo;
     const { heightFeet, heightInch } = basicInfo;
     if (weight === 0 

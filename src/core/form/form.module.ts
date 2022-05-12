@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button'
+import { MatSelectModule } from '@angular/material/select';
+
 import * as fromFeature from './state/reducer';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button'
-import {MatSelectModule} from '@angular/material/select';
 import { FormComponent } from './form.component';
 
 @NgModule({

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import * as fromRouter from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { Link, PageName } from 'src/models';
 import { NavActions } from './state';
 import { NavSelectors } from './state/selectors';
@@ -27,10 +27,14 @@ export class NavbarComponent {
     {
       link: 'tdee',
       pageName: PageName.TDEE
+    },
+    {
+      link: 'joke',
+      pageName: PageName.JOKE
     }
   ];
 
-  constructor(
+  public constructor(
     _navSelectors: NavSelectors,
     private _router: Router,
     private _store: Store
@@ -39,15 +43,13 @@ export class NavbarComponent {
     this.pageName$ = _navSelectors.pageName$;
   }
 
-  ngOnInit(): void {}
-
   public homeClicked(): void {
     this._router.navigateByUrl('/');
     this._store.dispatch(NavActions.pageNameChanged({pageName: PageName.Dashboard}))
 
   }
 
-  handleRoute(link: Link) {
+  public handleRoute(link: Link) {
     this._router.navigateByUrl(link.link);
     this._store.dispatch(
       NavActions.pageNameChanged({ pageName: link.pageName })

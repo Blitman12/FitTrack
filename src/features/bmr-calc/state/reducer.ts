@@ -1,6 +1,7 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { bmiActions } from "src/features/bmi-calc/state";
-import {bmrActions} from ".";
+import { Action, createReducer, on } from '@ngrx/store';
+
+import { bmiActions } from 'src/features/bmi-calc/state';
+import { bmrActions } from '.';
 
 export const featureName = 'bmrSlice';
 

@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BasicInfo, Link, PageName } from 'src/models';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+
+import { BasicInfo} from 'src/models';
 import { FormSelectors } from './state/selectors';
 import { formActions } from './state';
-import { NavActions } from '../navbar/state';
 
 @Component({
   selector: 'app-form',
@@ -14,8 +13,6 @@ import { NavActions } from '../navbar/state';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-
-
   public informationForm!: FormGroup;
 
   public get weightValue(): AbstractControl | null {
@@ -44,16 +41,15 @@ export class FormComponent implements OnInit {
 
   private _basicInfo = {} as BasicInfo;
 
-  constructor(
-    private _router: Router,
+  public constructor(
     private _formBuilder: FormBuilder,
     private _store: Store,
     private _appSelectors: FormSelectors
   ) {
-    this._appSelectors.basicInfo$.subscribe(info => this._basicInfo = info)
+    this._appSelectors.basicInfo$.subscribe(info => this._basicInfo = info);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.informationForm = this._formBuilder.group({
       weight: [this._basicInfo.weight, Validators.required],
       age: [this._basicInfo.age, Validators.required],
@@ -64,10 +60,10 @@ export class FormComponent implements OnInit {
         heightInch: [this._basicInfo.heightInch, Validators.required],
       }),
     });
-    this.informationForm.valueChanges.subscribe(() => this.handleValueChanges())
+    this.informationForm.valueChanges.subscribe(() => this.handleValueChanges());
   }
 
-  handleValueChanges() {
+  private handleValueChanges(): void {
     const weight = this.weightValue?.value
     const heightFeet = this.heightFtValue?.value
     const heightInch = this.heightInValue?.value

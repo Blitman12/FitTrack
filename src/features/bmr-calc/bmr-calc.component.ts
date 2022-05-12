@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+
 import { BmrSelectors } from './state/selectors';
 
 
@@ -11,11 +11,7 @@ import { BmrSelectors } from './state/selectors';
 export class BmrCalcComponent {
   public bmrVal = 0;
 
-  constructor(
-    private _store: Store,
-    private _bmrSelector: BmrSelectors
-    ) {
-      this._bmrSelector.bmrInfo$.subscribe(bmr => this.bmrVal = bmr)
-    }
-
+  public constructor(private _bmrSelector: BmrSelectors) {
+    this._bmrSelector.bmrInfo$.subscribe(bmr => this.bmrVal = bmr);
+  }
 }
